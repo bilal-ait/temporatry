@@ -1,12 +1,368 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Mercer | Game Developer Portfolio</title>
+    <style>
+        /* CSS Reset & General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f111a;
+            color: #e0e6ed;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #00f2fe;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #16192b;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #232742;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00f2fe;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00f2fe;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(15, 17, 26, 0.8), rgba(15, 17, 26, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+            text-decoration: none;
+        }
+
+        /* Sections General */
+        section {
+            padding: 60px 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #00f2fe;
+            margin: 10px auto 0;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #16192b;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #232742;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #232742;
+            color: #00f2fe;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            background: #16192b;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00f2fe;
+        }
+
+        .timeline-item h3 {
+            color: #ffffff;
+        }
+
+        .timeline-item .company {
+            color: #a0aec0;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .skill-badge {
+            background-color: #16192b;
+            border: 1px solid #232742;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #0b0c12;
+            border-top: 1px solid #232742;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">&lt;AlexMercer /&gt;</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <h1>Hi, I'm Alex Mercer</h1>
+        <p>Gameplay & Engine Programmer with 5+ years of experience crafting immersive 3D experiences, physics systems, and interactive gameplay mechanics.</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Cyber Odyssey" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Cyber Odyssey</h3>
+                    <p>A sci-fi action RPG featuring custom enemy AI behavior trees and realistic vehicle physics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unreal Engine 5</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprints</span>
+                    </div>
+                    <a href="#">View Details / Gameplay Video &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Realm of Echoes" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Realm of Echoes</h3>
+                    <p>A stylized 3D platformer with time-manipulation mechanics and custom shader effects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">HLSL/Shaders</span>
+                    </div>
+                    <a href="#">View Details / Try Demo &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Procedural Dungeons" class="project-img">
+                <div class="project-info">
+                    <h3 class="project-title">Procedural World Generator</h3>
+                    <p>A standalone tool/plugin designed to generate procedural terrain and infinite dungeon layouts.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">OpenGL</span>
+                        <span class="tag">Algorithms</span>
+                    </div>
+                    <a href="#">View Source Code (GitHub) &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <h3>Senior Gameplay Programmer</h3>
+                <div class="company">Ubisoft • 2022 - Present</div>
+                <p>Developed core character movement mechanics and combat systems for an unannounced AAA open-world title. Optimized frame rates for current-gen consoles.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Game Developer</h3>
+                <div class="company">Epic Games • 2020 - 2022</div>
+                <p>Worked on Fortnite gameplay features, integrated UI components using Unreal Engine C++, and fixed critical multiplayer networking bugs.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Junior Unity Developer</h3>
+                <div class="company">Indie Game Studio • 2018 - 2020</div>
+                <p>Assisted in developing mobile titles, implemented in-app purchases, and designed procedural level generation scripts.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <span class="skill-badge">C++</span>
+            <span class="skill-badge">C#</span>
+            <span class="skill-badge">Unreal Engine 4/5</span>
+            <span class="skill-badge">Unity 3D</span>
+            <span class="skill-badge">HLSL / Shader Graph</span>
+            <span class="skill-badge">Multiplayer Networking</span>
+            <span class="skill-badge">Git / Perforce</span>
+            <span class="skill-badge">Physics & AI</span>
+            <span class="skill-badge">Blender (3D Modeling)</span>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <h2 style="color: #fff; margin-bottom: 10px;">Get In Touch</h2>
+        <p>Interested in working together or hiring me for your team?</p>
+        <p style="margin: 15px 0;">
+            Email: <a href="mailto:alex.mercer@example.com">alex.mercer@example.com</a>
+        </p>
+        <p>
+            <a href="https://github.com" target="_blank">GitHub</a> | 
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a> | 
+            <a href="https://itch.io" target="_blank">Itch.io</a>
+        </p>
+        <br>
+        <p>&copy; 2026 Alex Mercer. Built for Game Developers.</p>
+    </footer>
+
+</body>
 </html>
